@@ -40,5 +40,12 @@
     "type": "Fire/Fairy",
     "region": "Elysia",
     "abilities": "Radiant Glow, Flame Veil, Dazzling Shield"
+  },
+  {
+    "id": 29,
+    "name": "Psyduck",
+    "type": "Water",
+    "region": "Kanto",
+    "abilities": "Damp, Cloud Nine"
   }
 ]
