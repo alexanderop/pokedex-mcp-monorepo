@@ -12,9 +12,9 @@ import { z } from 'zod';
 const execAsync = promisify(exec);
 
 // Log level management
-let currentLogLevel = 'info';
-const logLevels = ['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency'];
-const logLevelPriority = Object.fromEntries(logLevels.map((level, index) => [level, index]));
+const _currentLogLevel = 'info';
+const _logLevels = ['debug', 'info', 'notice', 'warning', 'error', 'critical', 'alert', 'emergency'];
+const _logLevelPriority = Object.fromEntries(_logLevels.map((level, index) => [level, index]));
 
 const server = new McpServer({
   name: 'pokedex-server',
@@ -23,13 +23,13 @@ const server = new McpServer({
 });
 
 // Track if we have an active connection
-let isConnected = false;
+let _isConnected = false;
 
 // Logging helper - only sends notifications if connected
-function log(level: string, logger: string, data: any) {
+function log(level: string, logger: string, data: unknown) {
   // Always log to console for debugging
   const timestamp = new Date().toISOString();
-  console.log(`[${timestamp}] [${level.toUpperCase()}] [${logger}]`, JSON.stringify(data));
+  console.error(`[${timestamp}] [${level.toUpperCase()}] [${logger}]`, JSON.stringify(data));
   
   // Don't attempt to send MCP notifications - the SDK doesn't support it properly
   // The logging capability is declared but notifications fail with "Server does not support logging"
@@ -272,7 +272,7 @@ server.tool(
       };
     }
 
-    let wildPokemon: any;
+    let wildPokemon: { name: string; type: string; region: string; abilities: string };
     try {
       wildPokemon = JSON.parse(
         res.content.text
@@ -281,7 +281,7 @@ server.tool(
           .replace(/```$/, '')
           .trim()
       );
-    } catch (parseError) {
+    } catch {
       log('error', 'tools', { action: 'discover-wild-pokemon', error: 'Failed to parse AI response' });
       return {
         content: [{ type: 'text', text: 'The wild Pokémon data was corrupted and it escaped!' }],
@@ -348,13 +348,13 @@ async function main() {
   
   // Set up connection event handlers
   transport.onclose = () => {
-    isConnected = false;
-    console.log('Server connection closed');
+    _isConnected = false;
+    console.error('Server connection closed');
   };
   
   await server.connect(transport);
-  isConnected = true;
-  console.log('Server connected and ready');
+  _isConnected = true;
+  console.error('Server connected and ready');
 }
 
 main();
