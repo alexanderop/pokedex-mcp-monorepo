@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { createGoogleGenerativeAI } from "@ai-sdk/google";
+import { createOpenAI } from "@ai-sdk/openai";
 import { confirm, input, select } from "@inquirer/prompts";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js";
@@ -16,8 +16,8 @@ const transport = new StdioClientTransport({
   args: ["--filter", "@pokedex/server", "start"],
 });
 
-const google = createGoogleGenerativeAI({
-  apiKey: process.env.GEMINI_API_KEY,
+const openai = createOpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 async function main() {
@@ -32,7 +32,7 @@ async function main() {
   mcp.setRequestHandler(CreateMessageRequestSchema, async (request) => {
     console.log("\nServer is asking for help from the AI...");
     const { text } = await generateText({
-      model: google("gemini-pro"),
+      model: openai("gpt-4o-mini"),
       prompt: request.params.messages[0].content.text,
     });
     return {
