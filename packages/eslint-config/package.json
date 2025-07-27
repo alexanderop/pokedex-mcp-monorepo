@@ -1,0 +1,13 @@
+{
+  "name": "@pokedex/eslint-config",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.10.4"
+  },
+  "peerDependencies": {
+    "eslint": ">=9.0.0",
+    "typescript": ">=5.0.0"
+  }
+}
