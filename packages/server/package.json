@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "build": "tsc",
-    "start": "node build/index.js"
+    "start": "node --no-warnings --experimental-json-modules build/index.js",
+    "inspect": "npm run build && npx @modelcontextprotocol/inspector node --no-warnings --experimental-json-modules build/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.13.0",

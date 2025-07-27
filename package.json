@@ -5,6 +5,8 @@
   "scripts": {
     "build:server": "pnpm --filter @pokedex/server build",
     "dev:client": "pnpm build:server && pnpm --filter @pokedex/client dev",
+    "dev:server": "pnpm --filter @pokedex/server start",
+    "dev:inspect": "pnpm --filter @pokedex/server inspect",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:packages": "pnpm -r run lint",
