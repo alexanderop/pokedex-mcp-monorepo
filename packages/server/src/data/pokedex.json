@@ -1,0 +1,23 @@
+[
+  {
+    "id": 25,
+    "name": "Pikachu",
+    "type": "Electric",
+    "region": "Kanto",
+    "abilities": "Static, Lightning Rod"
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "type": "Fire, Flying",
+    "region": "Kanto",
+    "abilities": "Blaze, Solar Power"
+  },
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "type": "Grass, Poison",
+    "region": "Kanto",
+    "abilities": "Overgrow, Chlorophyll"
+  }
+]

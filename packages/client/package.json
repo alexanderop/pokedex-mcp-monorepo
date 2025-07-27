@@ -1,0 +1,15 @@
+{
+  "name": "@pokedex/client",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@ai-sdk/google": "^0.0.26",
+    "@inquirer/prompts": "^5.3.3",
+    "@modelcontextprotocol/sdk": "^1.13.0",
+    "ai": "^3.2.33",
+    "dotenv": "^16.4.5"
+  }
+}
